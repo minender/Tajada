@@ -1,0 +1,17 @@
+//No usar expresiones booleanas
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  a=d;
+  if ((1+c == m )/m)
+  {
+	  b=3;
+  }
+
+}

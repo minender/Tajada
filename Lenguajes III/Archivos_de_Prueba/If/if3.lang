@@ -1,0 +1,25 @@
+//if normal con else y elif sin errores
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  a=d;
+  if (1 == 1)
+  {
+	  b=3;
+  }
+  elif( b == m)
+  {
+    m = b;
+  }
+  else
+  {
+    c = 2;
+  }
+
+}

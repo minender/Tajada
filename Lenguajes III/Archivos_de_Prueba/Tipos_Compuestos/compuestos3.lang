@@ -1,0 +1,39 @@
+//Buenas asignaciones
+
+typedef struct{
+  int a;
+  int b;
+} hola;
+
+typedef struct{
+  int a;
+  int b;
+} chao;
+
+union {
+  hola a;
+  chao b;
+} union1;
+
+struct {
+  int [4] a;
+  struct {
+    int c;
+    int b;
+  } b;
+} struct1;
+
+void main
+{
+  int [5] arreglo1;
+
+  // Aun no se revisa las dimensiones
+  arreglo1 = struct1.a;
+
+  chao chao1;
+  hola hola1;
+
+  // Son equivalentes
+  chao1 = hola1;
+
+}

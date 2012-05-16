@@ -1,0 +1,14 @@
+// en el void el return no es obligatorio
+
+
+void proc1(int a, int b)
+{
+  a = 2;
+}
+
+
+
+
+int main
+{
+}

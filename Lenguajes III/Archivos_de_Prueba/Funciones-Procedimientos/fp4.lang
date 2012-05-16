@@ -1,0 +1,12 @@
+// Las funciones tienen que retornar siempre
+
+
+int fun1(int a, int b)
+{
+  a = 2;
+}
+
+
+int main
+{
+}

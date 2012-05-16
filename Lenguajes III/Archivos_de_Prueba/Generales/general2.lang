@@ -1,0 +1,17 @@
+//Ejemplo de error de tipos.
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  a=d;
+  if (1 == 1)
+  {
+	  b=true;
+  }
+
+}

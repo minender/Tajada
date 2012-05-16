@@ -1,0 +1,182 @@
+\documentclass[spanish,12pt]{article}
+
+\usepackage{babel,t1enc,epsfig,amssymb,amscd,mathrsfs,latexsym}
+\setlength{\textwidth}{6in}
+
+\setlength{\textheight}{9in}
+
+\setlength{\oddsidemargin}{.25in}
+
+\setlength{\topmargin}{.25in}
+
+\frenchspacing
+
+\newtheorem{theorem}{Teorema}
+\begin{document}
+
+
+\begin{flushleft}
+UNIVERSIDAD SIM\'ON BOL\'IVAR\\INGENIERIA EN COMPUTACI\'ON\\LENGUAJES III
+\end{flushleft}
+
+\vskip 1in
+
+\begin{center}
+
+PRIMERA ENTREGA DE LA IMPLEMENTACI\'ON DE\end{center}
+
+
+\begin{center}ÇNC
+\end{center}
+
+\bigskip
+
+
+\bigskip
+
+
+\begin{center}
+
+\end{center}
+
+\vskip 1.25in
+
+
+\begin{flushleft} 
+Federico Flaviani
+\hfill  Caracas, 4 de junio de 2010\\Carnet:
+99-31744
+\end{flushleft}
+
+
+\newpage
+
+
+\begin{center}{\bf INTRODUCCI\'ON}
+\end{center}
+
+\vskip 1,5cm
+
+
+
+El objetivo de este proyecto es el de desarrollar un compilador del lenguaje ÇNC 
+(definido por Federico Ponte y Mar\'ia Gabriela Vald\'es) para el procesardor MIPS32.
+
+Dicho compilador esta siendo desarrollado en Java y su analizador lexicografico y sintactico 
+fue hecho con las herramientas javaflex y javacup. En este informe se encontraran solamente 
+detalles del back end, por lo tanto en las siguientes paginas no encontrara informaci\'on sobre 
+las dos herramientas antes mensionadas.
+
+Todos los programas en MIPS32 resultantes de la compilaci\'on de programas en ÇNC usados en 
+este proyecto fueron verificados con el simulador Spim.
+
+\newpage
+
+
+\begin{center}{\bf ESTADO DEL C\'ODIGO}
+\end{center}
+
+\vskip 1,5cm
+
+
+
+Solo se esta 
+generando c\'odigo para imprimir la tabla de simbolos global, ninguna otra tabla de simbolos es 
+impresa por el compilador. Tampoco 
+se genera c\'odigo para las inicilizaciones que son hechas en el entorno global, o sea fuera del 
+bloque main, de modo que si se quiere que el programa compilado corra correctamente en MIPS, por 
+ahora es necesario declarar todas las variables en el entorno global y luego inicializarlas 
+dentro del main.
+
+ Hasta el momento esta implementado la generaci\'on de codigo de todas las expreciones, exepto 
+las de identificadores con acceso a registro, uniones y arreglos (la generaci\'on de codigo para 
+variables de tipo basico si esta implementado). 
+
+La generaci\'on de c\'odigo de las intrucciones 
+esta implementado, salvo  
+la de la instrucci\'on switch  y la instrucci\'on asignaci\'on cuando el L-Value es un 
+acceso a registro, union o arreglo.
+
+Est\'a implementado el c\'alculo de los tama\~nos de los tipos, exepto el de los arreglos cuyo 
+tama\~no sea declarado con una expresi\'on distinta de constante (el c\'alculo del tama\~no de los 
+arreglos que son declarados con una constante si esta implementado).
+
+No esta implementado la generaci\'on de c\'odigo para expresiones de tipo float,
+
+\newpage
+
+\begin{center}{\bf TECNICAS DE IMPLEMENTACI\'ON}
+\end{center}
+\vskip 1,5cm
+
+Para la implementaci\'on del c\'odigo para expresiones booleanas se usan las dos tecnicas vistas 
+en clases:
+
+\begin{enumerate}
+\item c\'odigo con evaluaci\'on en registros
+
+Este tipo de c\'odigo se genera cuando la expresi\'on booleana se encuentra al lado derecho de 
+una asignaci\'on.
+
+\item c\'odigo con salto a etiquetas predeterminadas
+
+Este tipo de c\'odigo se genera cuando la expresi\'on booleana se encuentra dentro de la 
+condici\'on de un while o un if
+\end{enumerate}
+
+Las expresiones ar\'itmeticas se compilan con la t\'ecnica de evaluaci\'on en registros, tal cual 
+como fue visto en clases, salvo que los atributos sintetizados de las clases son metodos de los 
+arboles abstractos y los atributos heredados son parametros que se pasan a los m\'etodos de estos 
+arboles. Por ejemplo:
+
+En clases se vio que $\\$
+
+$SUM: AEAritm \rightarrow AEAritm AEAritm\\
+AEAritm_1 .prox\_reg :=AEAritm_0 .prox\_reg\\
+AEAritm_2 .prox\_reg :=AEAritm_0 .prox\_reg +1\\
+AEAritm_0 .reg:=AEAritm_0 .prox\_reg mod N\\
+AEAritm_0 .codigo:=AEAritm_1 .codigo +\\
+salv+\\
+AEAritm_2 .codigo+\\
+linea(AEAritm_0 .reg:=AEAritm_1 .reg+AEAritm_2 .reg)$ $\\$
+
+Donde como se puede ver $prox\_reg$ es un atributo heredado y $codigo,reg$ son sintetizados. 
+
+En nuestro c\'odigo en java tenemos un m\'etodo reg y uno llavado codigo, y ambos tienen como 
+parametro el entero $prox\_reg$, de modo que el codigo para la suma seria:
+$\\$
+
+$left.codigo(prox\_reg)+\\
+                       P.salvar(prox\_reg+1) +\\
+                       right.codigo(prox\_reg +1)+\\
+                       P.linea("add "+reg+", "+reg+", "+right.reg(prox\_reg +1))+\\
+                       P.restaurar(prox\_reg+1)$ $\\$
+
+Donde la clase $P$ es donde estan todos los procedimientos est\'aticos que se usaron 
+en las clases de teoria, por ejemplo salvar, restaurar, newLabel, linea, etc
+
+Los identificadores de la tabla de simbolos global (que es la \'unica a la que se le genera c\'odigo por ahora), 
+se implementa como etiquetas en la secci\'on de data, los identificadores de las demas tablas se 
+implementaran como direcciones en memoria calculadas por desplazamientos del $fp$.
+
+\newpage
+\begin{center}{\bf PROGRAMAS DE PRUEBA}
+\end{center}
+\vskip 1,5cm
+
+El compilador CNC.class recibe como entrada un archivo ascii con extenci\'on lang y retorna 
+otro archivo ascii punto s para poder ser corrido en Spim.
+
+Los programas de prueba que se usaron estan en la carpeta nuevasPruebas y los resultados 
+de compilar dichos programas estan en la carpeta resultados. Estas pruebas estan divididas en 
+tres carpetas:
+
+\begin{enumerate}
+\item Expresiones: Pruebas con expresiones aritmeticas y booleanas de las cuales para estas 
+ultimas existen pruebas donde se aplican evaluaci\'on en registros y otras donde se aplican 
+saltos a etiquetas predeterminadas.
+\item If: Pruebas con if y else anidados con otras instrucciones.
+\item While: Pruebas con while anidados con las demas instrucciones.
+\end{enumerate}
+
+\end{document}

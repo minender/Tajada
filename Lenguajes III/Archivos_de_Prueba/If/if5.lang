@@ -1,0 +1,52 @@
+//if anidados sin errores
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  a=d;
+  if (1 == 1)
+  {
+	  b=3;
+    if( a == d)
+    {
+      a = d;
+    }
+    elif(c == d)
+    {
+      c = d;
+    }
+    else
+    {
+      m = b;
+    }
+  }
+  elif( b == m)
+  {
+    if( a == d)
+    {
+      a = d;
+    }
+    else
+    {
+      m = b;
+    }
+  }
+  elif( b == m)
+  {
+    m = b;
+  }
+  else
+  {
+    if(b == 3)
+    {
+      a = d;
+    }
+    c = 2;
+  }
+
+}

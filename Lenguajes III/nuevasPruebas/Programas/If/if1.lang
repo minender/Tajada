@@ -1,0 +1,15 @@
+//if sencillo
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if((b>d)||true)
+   {
+      b=d+30;     
+   } 
+}

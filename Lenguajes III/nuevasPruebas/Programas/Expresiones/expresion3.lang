@@ -1,0 +1,21 @@
+//expresion implementada con evaluacion en registro
+//pero en la condicion del if es con saltos a etiquetas
+
+bool a;
+bool b;
+bool c;
+int d;
+
+int main
+{
+   a=true;
+   b=a;
+   c=false;
+   d=1;
+
+   a=!((b || c) && a) && (2 <= d);
+   if(a)
+   {
+      d--;
+   }
+}

@@ -1,0 +1,14 @@
+//while con expresion compleja
+
+int main {
+    int a = 0;
+    int b = 80;
+    char c = 'a';
+	
+	while (a*10-4/(b -40) == 100) {
+	    if (b != 8.2) {
+		c = '3';	
+	    }
+	    a++;		
+	}
+}

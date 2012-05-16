@@ -1,0 +1,16 @@
+//Error en declaracion
+
+int main{
+
+  int a, l, k, t;
+  int d;
+  int c;
+  bool b;
+  int m;
+
+
+  for(int c = 3; i<10; i++)
+  {
+    c = i;
+  }
+}

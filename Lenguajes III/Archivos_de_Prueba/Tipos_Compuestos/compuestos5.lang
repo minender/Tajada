@@ -1,0 +1,11 @@
+//Prueba de accesos ( no tiene errores)
+
+void main
+{
+  struct { float campo1; }[5] a;
+
+  if(a[1].campo1 == 5)
+  {
+  }
+
+}

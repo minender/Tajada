@@ -1,0 +1,14 @@
+//x no declarada
+
+int main{
+
+  int a, l, k, t;
+  int d;
+  int c;
+  bool b;
+  int m;
+
+  m = x;
+
+  
+}

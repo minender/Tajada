@@ -1,0 +1,22 @@
+//Lectura de expresiones sin errores.
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+  bool bo;
+  int [4]arreglo1;
+  float [4]arreglo2;
+
+  float f;
+
+  a=d;
+  if (a == 1)
+  {
+	  a = ((m*c+2)/m*d)-(-4+m++);
+  }
+
+}

@@ -1,0 +1,7 @@
+// los break tienen que ir dentro de los for y while
+
+void main
+{
+  break;
+}
+

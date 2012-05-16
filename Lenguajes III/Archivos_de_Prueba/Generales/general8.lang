@@ -1,0 +1,17 @@
+//Las declaraciones globales siempre van antes que los procedimientos
+
+int a;
+
+void proc()
+{}
+
+int b;
+
+void main
+{
+  while(true)
+  {
+    break;
+  }
+}
+

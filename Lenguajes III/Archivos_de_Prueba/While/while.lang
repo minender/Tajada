@@ -1,0 +1,19 @@
+//while sencillo
+
+int a=0;
+
+int main {
+ //     int a=0;
+        bool b=true;
+       while (b) {
+           a=1+2;
+           if(!b)
+           {
+              a++;
+           }
+           if(b)
+           {
+              b=false;
+           }
+       }
+ }

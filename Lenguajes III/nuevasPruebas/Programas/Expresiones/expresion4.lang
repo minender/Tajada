@@ -1,0 +1,19 @@
+//expresion implementada con saltos a etiquetas
+
+bool a;
+bool b;
+bool c;
+int d;
+
+int main
+{
+   a=true;
+   b=a;
+   c=false;
+   d=1;
+
+   if(!((b || c) && a) && (2 <= d))
+   {
+      d--;
+   }
+}

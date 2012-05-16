@@ -1,0 +1,22 @@
+//if con else
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if(b>d)
+   {
+      b=d+30;     
+   }
+   else
+   {
+      if(d==30)
+      {
+         d++;
+      }
+   } 
+}

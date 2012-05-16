@@ -1,0 +1,14 @@
+//Expresion implementada con evaluacion en registro
+
+int a;
+int b;
+int c;
+
+int main
+{
+   a=2;
+   b=a;
+   c=1;
+
+   a=(((b + c)/2)*a)-c;
+}

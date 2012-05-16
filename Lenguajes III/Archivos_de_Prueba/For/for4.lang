@@ -1,0 +1,20 @@
+//Error de variable no declarada
+
+int main{
+
+  int a, l, k, t;
+  int d;
+  int c;
+  bool b;
+  int m;
+
+
+  for(int i = 3; i<10; i++)
+  {
+    c = i;
+    for(kl = 3; c<50; i++)
+    {
+      b = true;
+    }
+  }
+}

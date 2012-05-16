@@ -1,0 +1,10 @@
+// los break tienen que ir dentro de los for y while ( no tiene errores)
+
+void main
+{
+  while(true)
+  {
+    break;
+  }
+}
+

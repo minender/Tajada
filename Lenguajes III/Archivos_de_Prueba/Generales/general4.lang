@@ -1,0 +1,19 @@
+//Error de anidamientos con if
+
+int main{
+
+  int a;
+  int c;
+  bool b;
+  float m;
+
+  a=m=3;
+
+  if (1 == 1)
+  {
+    a =2;
+    int a;
+    a = 3;
+   }
+
+}

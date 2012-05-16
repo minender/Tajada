@@ -1,0 +1,35 @@
+//Malas asignaciones
+
+typedef struct{
+  int a;
+  int b;
+} hola;
+
+typedef struct{
+  int a;
+} chao;
+
+union {
+  hola a;
+  chao b;
+} u;
+
+
+
+void main
+{
+  bool [2][3] z;
+  z = u;
+
+  hola a;
+
+  a = z;
+  a = u;
+
+  chao b;
+
+  b = z;
+  b = u;
+
+  a = b;
+}

@@ -1,0 +1,747 @@
+//Expresion implementada con evaluacion en registro
+
+int a;
+int b;
+int c;
+
+int main
+{
+   a=2;
+   b=a;
+   c=1;
+
+   a=(((b + c)/2)*a)-c;
+}
+
+	a: .space 4
+	c: .space 4
+	.text
+main :
+	la $s3, a
+	ori $s4, $0, 2
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	lw $s4, a
+	sw $s4,0($s3)
+instr_2: 
+	la $s3, c
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_3: 
+	la $s3, a
+	lw $s4, b
+	lw $s5, c
+	add $s4, $s4, $s5
+	ori $s5, $0, 2
+	div $s4, $s4, $s5
+	mflo $s4
+	lw $s5, a
+	mult $s4, $s4, $s5
+	mflo $s4
+	lw $s5, c
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//Expresion implementada con evaluacion en registro
+
+bool a;
+bool b;
+bool c;
+int d;
+
+int main
+{
+   a=true;
+   b=a;
+   c=false;
+   d=1;
+
+   a=!((b || c) && a) && (2 <= d);
+}
+
+	.data
+	b: .space 1
+	a: .space 1
+	d: .space 4
+	c: .space 1
+	.text
+main :
+	la $s3, a
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	lw $s4, a
+	sw $s4,0($s3)
+instr_2: 
+	la $s3, c
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_3: 
+	la $s3, d
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_4: 
+	la $s3, a
+	lw $s4, b
+	bne $s4,$0, CorCir_7
+	nop
+	lw $s4, c
+CorCir_7 :
+	beq $s4, $0, CorCir_6
+	nop
+	lw $s4, a
+CorCir_6 :
+	nor $s4, $s4, $0
+	beq $s4, $0, CorCir_5
+	nop
+	ori $s4, $0, 2
+	lw $s5, d
+	sub $s4, $s5, $s4
+	bgez $s4, menorI_8
+	ori $s4, $0, 0
+	j menorI_9
+menorI_8: 
+	ori $s4, $0, 1
+menorI_9: 
+CorCir_5 :
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//expresion implementada con evaluacion en registro
+//pero en la condicion del if es con saltos a etiquetas
+
+bool a;
+bool b;
+bool c;
+int d;
+
+int main
+{
+   a=true;
+   b=a;
+   c=false;
+   d=1;
+
+   a=!((b || c) && a) && (2 <= d);
+   if(a)
+   {
+      d--;
+   }
+}
+
+	.data
+	b: .space 1
+	a: .space 1
+	d: .space 4
+	c: .space 1
+	.text
+main :
+	la $s3, a
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	lw $s4, a
+	sw $s4,0($s3)
+instr_2: 
+	la $s3, c
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_3: 
+	la $s3, d
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_4: 
+	la $s3, a
+	lw $s4, b
+	bne $s4,$0, CorCir_8
+	nop
+	lw $s4, c
+CorCir_8 :
+	beq $s4, $0, CorCir_7
+	nop
+	lw $s4, a
+CorCir_7 :
+	nor $s4, $s4, $0
+	beq $s4, $0, CorCir_6
+	nop
+	ori $s4, $0, 2
+	lw $s5, d
+	sub $s4, $s5, $s4
+	bgez $s4, menorI_9
+	ori $s4, $0, 0
+	j menorI_10
+menorI_9: 
+	ori $s4, $0, 1
+menorI_10: 
+CorCir_6 :
+	sw $s4,0($s3)
+instr_5: 
+	lw $s3, a
+	beq $0, $s3, fin_0
+	j si_11
+si_11: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//expresion implementada con saltos a etiquetas
+
+bool a;
+bool b;
+bool c;
+int d;
+
+int main
+{
+   a=true;
+   b=a;
+   c=false;
+   d=1;
+
+   if(!((b || c) && a) && (2 <= d))
+   {
+      d--;
+   }
+}
+
+	.data
+	b: .space 1
+	a: .space 1
+	d: .space 4
+	c: .space 1
+	.text
+main :
+	la $s3, a
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	lw $s4, a
+	sw $s4,0($s3)
+instr_2: 
+	la $s3, c
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_3: 
+	la $s3, d
+	ori $s4, $0, 1
+	sw $s4,0($s3)
+instr_4: 
+	lw $s3, b
+	beq $0, $s3, noCorCir_8
+	j noCorCir_7
+noCorCir_8 :
+	lw $s3, c
+	beq $0, $s3, noCorCir_6
+	j noCorCir_7
+noCorCir_7 :
+	lw $s3, a
+	beq $0, $s3, noCorCir_6
+	j fin_0
+noCorCir_6 :
+	ori $s3, $0, 2
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bgez $s3, si_5
+	j fin_0
+si_5: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//if sencillo
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if((b>d)||true)
+   {
+      b=d+30;     
+   } 
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bltz $s3, si_3
+	j noCorCir_4
+noCorCir_4 :
+	j si_3
+si_3: 
+	la $s3, b
+	lw $s4, d
+	ori $s5, $0, 30
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//if con else
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if(b>d)
+   {
+      b=d+30;     
+   }
+   else
+   {
+      b=d-30;
+   } 
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bltz $s3, si_3
+	j sino_4
+si_3: 
+	la $s3, b
+	lw $s4, d
+	ori $s5, $0, 30
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+sino_4: 
+	la $s3, b
+	lw $s4, d
+	ori $s5, $0, 30
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//if con else
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if(b>d)
+   {
+      b=d+30;     
+   }
+   else
+   {
+      if(d==30)
+      {
+         d++;
+      }
+   } 
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bltz $s3, si_3
+	j sino_4
+si_3: 
+	la $s3, b
+	lw $s4, d
+	ori $s5, $0, 30
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+sino_4: 
+	lw $s3, d
+	ori $s4, $0, 30
+	beq $s3, $s4, si_5
+	j fin_0
+si_5: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+fin_0: 
+	li $v0, 10
+	syscall
+
+//if anidado con while
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if(b>d)
+   {
+      b=d+30;     
+   }
+   else
+   {
+      while(d<=120 || d==30)
+      {
+         d++;
+      }
+   } 
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bltz $s3, si_3
+	j sino_4
+si_3: 
+	la $s3, b
+	lw $s4, d
+	ori $s5, $0, 30
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+sino_4: 
+cond_6: 
+	lw $s3, d
+	ori $s4, $0, 120
+	sub $s3, $s4, $s3
+	bgez $s3, bloque_5
+	j noCorCir_7
+noCorCir_7 :
+	lw $s3, d
+	ori $s4, $0, 30
+	beq $s3, $s4, bloque_5
+	j fin_0
+bloque_5: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+	j cond_6
+fin_0: 
+	li $v0, 10
+	syscall
+
+//while sencillo
+
+int d;
+
+int main
+{
+   d=100;
+
+   while(3<d)
+   {
+      d--;
+   }
+}
+
+	.data
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+cond_3: 
+	ori $s3, $0, 3
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bltz $s3, bloque_2
+	j fin_0
+bloque_2: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+	j cond_3
+fin_0: 
+	li $v0, 10
+	syscall
+
+//while sencillo
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   while(3<d)
+   {
+      if(b>=d)
+      {
+         b++;   
+      }
+      d--;
+      
+   }
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+cond_4: 
+	ori $s3, $0, 3
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bltz $s3, bloque_3
+	j fin_0
+bloque_3: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bgez $s3, si_6
+	j instr_5
+si_6: 
+	la $s3, b
+	lw $s4, b
+	ori $s5, $0, 1
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+instr_5: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+	j cond_4
+fin_0: 
+	li $v0, 10
+	syscall
+
+//while anidado con if
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   while(3<d)
+   {
+      d--;
+      while(b>d)
+      {
+         if(b>=d)
+         {
+            b++;   
+         }
+      } 
+   }
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+cond_4: 
+	ori $s3, $0, 3
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bltz $s3, bloque_3
+	j fin_0
+bloque_3: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+instr_5: 
+cond_7: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bltz $s3, bloque_6
+	j cond_4
+bloque_6: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bgez $s3, si_8
+	j cond_7
+si_8: 
+	la $s3, b
+	lw $s4, b
+	ori $s5, $0, 1
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+	j cond_7
+	j cond_4
+fin_0: 
+	li $v0, 10
+	syscall
+
+//while anidado con dos if
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   while(3<d)
+   {
+      d--;
+      if(b>d)
+      {
+         if(b>=d)
+         {
+            b++;   
+         }
+      } 
+   }
+}
+
+	.data
+	b: .space 4
+	d: .space 4
+	.text
+main :
+	la $s3, d
+	ori $s4, $0, 100
+	sw $s4,0($s3)
+instr_1: 
+	la $s3, b
+	ori $s4, $0, 0
+	sw $s4,0($s3)
+instr_2: 
+cond_4: 
+	ori $s3, $0, 3
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bltz $s3, bloque_3
+	j fin_0
+bloque_3: 
+	la $s3, d
+	lw $s4, d
+	ori $s5, $0, 1
+	sub $s4, $s4, $s5
+	sw $s4,0($s3)
+instr_5: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s4, $s3
+	bltz $s3, si_6
+	j cond_4
+si_6: 
+	lw $s3, b
+	lw $s4, d
+	sub $s3, $s3, $s4
+	bgez $s3, si_7
+	j cond_4
+si_7: 
+	la $s3, b
+	lw $s4, b
+	ori $s5, $0, 1
+	add $s4, $s4, $s5
+	sw $s4,0($s3)
+	j cond_4
+fin_0: 
+	li $v0, 10
+	syscall
+

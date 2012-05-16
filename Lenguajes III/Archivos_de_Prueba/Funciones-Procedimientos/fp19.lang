@@ -1,0 +1,23 @@
+//No hay que preocuparser por las variables globales, pero si de las del procedimiento
+
+int a;
+int b;
+
+void proc1(int a, int b)
+{
+  int a;
+  if(a == 2)
+  {
+    return;
+  }
+  else
+  {
+    return;
+  }
+}
+
+
+int main
+{
+  proc1(2,3);
+}

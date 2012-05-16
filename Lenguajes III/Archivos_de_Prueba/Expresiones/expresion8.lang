@@ -1,0 +1,22 @@
+//Buen acceso a un arreglo
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+  bool bo;
+  char [5]ch;
+  char ct;
+
+  float f;
+
+  a=d;
+  if (a == 1)
+  {
+	 ct = ch[2];
+  }
+
+}

@@ -1,0 +1,12 @@
+//Ejemplo de error en el anidamiento.
+
+int b;
+
+int main{
+
+  int a;
+  bool b;
+
+  b=true;
+  a=1;
+}

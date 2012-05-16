@@ -1,0 +1,20 @@
+//Error de tipos
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+  bool bo;
+
+  float f;
+
+  a=d;
+  if (a == 1)
+  {
+	  b=(f+3.0)+2/bo;
+  }
+
+}

@@ -1,0 +1,22 @@
+//while anidado con if
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   while(3<d)
+   {
+      d--;
+      while(b>d)
+      {
+         if(b>=d)
+         {
+            b++;   
+         }
+      } 
+   }
+}

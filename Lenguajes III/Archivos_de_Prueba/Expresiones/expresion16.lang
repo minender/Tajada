@@ -1,0 +1,30 @@
+//Buen acceso a un elemento de la estructura.
+
+typedef struct
+{
+  int a;
+  int [4]b;
+} estructura;
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+  bool bo;
+  int [4]arreglo1;
+  float [4]arreglo2;
+
+  estructura e;
+
+  float f;
+
+  a=d;
+  if (e.a == d)
+  {
+
+  }
+
+}

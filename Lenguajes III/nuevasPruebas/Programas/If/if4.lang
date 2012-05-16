@@ -1,0 +1,22 @@
+//if anidado con while
+
+int d;
+int b;
+
+int main
+{
+   d=100;
+   b=0;
+
+   if(b>d)
+   {
+      b=d+30;     
+   }
+   else
+   {
+      while(d<=120 || d==30)
+      {
+         d++;
+      }
+   } 
+}

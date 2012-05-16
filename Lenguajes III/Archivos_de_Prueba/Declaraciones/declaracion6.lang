@@ -1,0 +1,16 @@
+//x no declarada
+
+int main{
+
+  int a, l, k, t;
+  int d;
+  int c;
+  bool b;
+  int m;
+
+  for(int a = x; a<10; a++)
+  {
+    b = 10+x;
+  }
+  
+}

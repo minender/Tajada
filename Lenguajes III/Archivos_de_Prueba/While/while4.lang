@@ -1,0 +1,14 @@
+//while's anidados
+
+int main {
+    int a = 0;
+    int b = 80;
+    char c = 'a';
+    
+    while (a == 0) {
+	while(!false) {
+	    c = '3';
+	    b++;
+	}
+    }
+}

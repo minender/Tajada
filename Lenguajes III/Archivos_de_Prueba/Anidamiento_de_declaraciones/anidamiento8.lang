@@ -1,0 +1,27 @@
+//Error: No se anidan las globales, pero si las adentro de las funciones
+
+int global = 2;
+
+void a(int global)
+{
+  global = 2;
+  while(global != 2)
+  {
+    int global;
+  }
+}
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  for(int global = 3; global <4; global++)
+  {
+    c = 3;
+  }
+
+}

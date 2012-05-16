@@ -1,0 +1,41 @@
+//Prueba de accesos ( no tiene errores)
+
+typedef struct{
+  int a;
+  int b;
+} hola;
+
+
+struct 
+{
+  int [4] a;
+  struct 
+  {
+    int c;
+    int b;
+  } b;
+} struct1;
+
+struct 
+{
+  int [4] a;
+  struct 
+  {
+    struct
+    {
+      int a;
+      int [6] b;
+    }a;
+  } b;
+} struct2;
+
+void main
+{
+  int [5] arreglo1;
+  int a;
+
+  // Aun no se revisa las dimensiones
+  arreglo1 = struct2.b.a.b;
+  a =   struct2.b.a.b[4];
+
+}

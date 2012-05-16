@@ -1,0 +1,28 @@
+//switch con error de tipos en los case
+
+int main{
+
+	int a = 3;
+	int b,d,e;
+
+	d = a*4/(2+3);
+	e = 90;
+ 
+	switch (d) {
+		case true:
+			for (int i = 0; i < 8; i++) {
+				a--;
+			}
+		case 20: 
+			if (a == 5) {
+				b = 9;		
+			}
+		default:
+			if (true) {
+				b--;
+			}
+			else {
+				b++;
+			}
+	}
+}

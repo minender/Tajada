@@ -1,0 +1,99 @@
+/* Programa completo sin
+   error */
+
+//Solo se busca demostrar que la gramatica sirve
+
+const int global = 2;
+int global2;
+bool global3;
+
+int a;
+
+typedef struct{
+  int a;
+  int b;
+} hola;
+
+
+
+void proc1(int a, int b)
+{
+  global = global2;
+  if(a!=fun1())
+  {
+    global = 3;
+  }
+}
+
+int fun1(int a)
+{
+  global2 = 3;
+  if(global >2)
+  {
+    global = 2;
+    return 1;
+  }
+  a = 2;
+  return 2;
+}
+
+void main
+{
+
+  int a, b, c = 3;
+  float f;
+  bool d;
+  bool [2][3] z;
+
+  struct {
+    hola n;
+    int b;
+  } h;
+
+  hola j;
+
+
+  for(int i = 2; i<10; i++)
+  {
+     if(i == kl())
+     {
+       break;
+     }
+     i = 10;
+  }
+
+
+
+  int m;
+
+  a=c=b=f;
+
+  if ( fun1(2) +1 == 2)
+  {
+    a =2;
+   }
+  elif(d)
+  {
+	  d=false;
+  }
+  else{
+    d=('\\'>3);
+  }
+
+  m = 0;
+
+  switch(a){
+    case 1:
+      a = 2;
+    default:
+      a = 3;
+  }
+
+  while((a=3)!=2)
+  {
+    a=b%3;
+    b = b/c;
+    m = b*a++;
+  }
+
+}

@@ -1,0 +1,22 @@
+//No se anidan las globales, pero si las adentro de las funciones
+//No tiene errores
+
+int global = 2;
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  a=d;
+  if (1 == 1)
+  {
+    int global;
+  }
+
+  int global;
+
+}

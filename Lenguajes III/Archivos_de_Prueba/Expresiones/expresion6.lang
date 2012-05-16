@@ -1,0 +1,21 @@
+//Error de tipos
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+  bool bo;
+  char ch;
+
+  float f;
+
+  a=d;
+  if (a == 1)
+  {
+	  b=a;
+  }
+
+}

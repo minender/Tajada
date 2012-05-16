@@ -1,0 +1,19 @@
+//Ejemplo de que se puede asignar float con int
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+
+  float f;
+
+  a=d;
+  if (a == 1)
+  {
+	  b=f;
+  }
+
+}

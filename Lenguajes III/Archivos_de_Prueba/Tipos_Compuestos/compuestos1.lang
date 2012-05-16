@@ -1,0 +1,28 @@
+//Gramatica lee bien las estrucuturas
+
+typedef struct{
+  int a;
+  int b;
+} hola;
+
+typedef struct{
+  int a;
+} chao;
+
+union {
+  hola a;
+  chao b;
+} u;
+
+struct {
+  int [4] a;
+  struct {
+    int c;
+    int b;
+  } b;
+} s;
+
+void main
+{
+  bool [2][3] z;
+}

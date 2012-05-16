@@ -1,0 +1,13 @@
+//while sencillo
+
+int d;
+
+int main
+{
+   d=100;
+
+   while(3<d)
+   {
+      d--;
+   }
+}

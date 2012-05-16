@@ -1,0 +1,21 @@
+//Uso de asignaciones ( se vio en el caso anterior con el m++=
+
+int main{
+
+  int a;
+  int d;
+  int c;
+  int b;
+  int m;
+  bool bo;
+  int [4]arreglo1;
+  float [4]arreglo2;
+
+  float f;
+
+  a=d;
+  if (arreglo1 == m=2)
+  {
+  }
+
+}
